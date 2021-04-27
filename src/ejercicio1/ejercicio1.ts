@@ -256,10 +256,17 @@ SALIDA: `File helloworld.txt has been modified somehow`
 FINALIZAMOS LA EJECUCIÓN:
 
 
+************* E V E N T O S   A P I **************
+|
+|
+|                                                      --> Se saca el evento on del registro                                          
+**************************************************
+
+
 |               |
 |               |
 |               |  
-|               | --> Se saca el manejador de access
+|               | --> Se saca de la pila el manejador de access
 |  main         |
 -----------------
 
@@ -268,6 +275,6 @@ FINALIZAMOS LA EJECUCIÓN:
 |               |
 |               |  
 |               | 
-|               |   --> Se saca main
+|               |   --> Se saca de la pila main
 -----------------
 */

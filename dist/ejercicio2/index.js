@@ -22,20 +22,4 @@ function tratamientoFicheros(pipe, fichero) {
         }
     });
 }
-try {
-    if (parseInt(process.argv[3]) != 0 && parseInt(process.argv[3]) != 1) {
-        throw "ERROR: Incluya como parámetro si utilizará la aplicación con pipe (1) o no (0)";
-    }
-}
-catch (err) {
-    console.log(err);
-}
-try {
-    if (!open(process.argv[2])) {
-        throw "ERROR: Incluya como parámetro si utilizará la aplicación con pipe (1) o no (0)";
-    }
-}
-catch (err) {
-    console.log(err);
-}
 tratamientoFicheros(parseInt(process.argv[3]), process.argv[2]);

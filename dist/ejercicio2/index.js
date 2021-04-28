@@ -1,25 +1,39 @@
 "use strict";
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const child_process_1 = require("child_process");
-function tratamientoFicheros(pipe, fichero) {
-    const wc = child_process_1.spawn('wc', [fichero]);
-    let wcOutput = '';
-    wc.stdout.on('data', (piece) => wcOutput += piece);
-    wc.on('close', () => {
-        const wcOutputAsArray = wcOutput.split(/\s+/);
-        if (pipe == 1) {
-            console.log(`El fichero tiene ${wcOutputAsArray[1]} líneas`);
-            console.log(`El fichero tiene ${wcOutputAsArray[2]} palabras`);
-            console.log(`El fichero tiene ${wcOutputAsArray[3]} caracteres`);
-        }
-        else if (pipe == 0) {
-            const lineas = wcOutputAsArray[1];
-            const palabras = wcOutputAsArray[2];
-            const caracteres = wcOutputAsArray[3];
-            child_process_1.spawn('echo', [`El fichero tiene ${lineas} líneas`]).stdout.pipe(process.stdout);
-            child_process_1.spawn('echo', [`El fichero tiene ${palabras} palabras`]).stdout.pipe(process.stdout);
-            child_process_1.spawn('echo', [`El fichero tiene ${caracteres} caracteres`]).stdout.pipe(process.stdout);
-        }
-    });
+const f = __importStar(require("./funciones"));
+const yargs = require('yargs');
+/**
+ * Comando --info: Sirve añadir una nota.
+ * OPCIONES: --ruta="ruta del fichero" --metodo="metodo a utilizar" --modo="modo a mostrar"
+ */
+yargs.command("info", 'Añadir una nueva nota', {
+    ruta: {
+        describe: 'Ruta del fichero',
+        demandOption: true,
+        type: 'string',
+    },
+    metodo: {
+        describe: 'Método que quiere utilizar: mediante pipe (1) o mediante subprocesos (0)',
+        demandOption: true,
+        type: 'string',
+    },
+    modo: {
+        describe: 'Modo en que quiere mostrar la informacion. Solo líneas (1), solo palabras (2), solo caracteres (3), toda la información(*)',
+        demandOption: true,
+        type: 'string',
+    }
+});
+yargs.help();
+yargs.alias("help", "h");
+const argv = yargs.argv;
+const comando = argv._[0];
+if (comando == "info") {
+    f.tratamientoFicheros(argv.ruta, parseInt(argv.metodo), argv.modo);
 }
-tratamientoFicheros(parseInt(process.argv[3]), process.argv[2]);

@@ -20,7 +20,7 @@ class Modify {
      */
     constructor(usuario, titulo, texto, color) {
         this.rutaFichero = "";
-        this.rutaFichero = `./src/bbdd/${usuario}/${titulo}.json`;
+        this.rutaFichero = `./src/ejercicio3/bbdd/${usuario}/${titulo}.json`;
         if (this.comprobarNotaExistente(titulo) == 0) {
             new operacionAdd_1.Add(usuario, titulo, texto, color);
         }

@@ -20,7 +20,7 @@ class Read {
         this.titulo = "";
         this.nota = "";
         this.texto = "";
-        this.rutaFichero = `./src/bbdd/${usuario}/${titulo}.json`;
+        this.rutaFichero = `./src/ejercicio3/bbdd/${usuario}/${titulo}.json`;
         if (this.comprobarNotaExistente(titulo) == 0) {
             this.nota = fs_1.readFileSync(this.rutaFichero).toString();
             this.titulo = titulo;

@@ -14,7 +14,7 @@ class Remove {
      */
     constructor(usuario, titulo) {
         this.rutaFichero = "";
-        this.rutaFichero = `./src/bbdd/${usuario}/${titulo}.json`;
+        this.rutaFichero = `./src/ejercicio3/bbdd/${usuario}/${titulo}.json`;
         this.comprobarNotaExistente(titulo);
     }
     /**

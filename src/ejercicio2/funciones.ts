@@ -1,18 +1,19 @@
 import {spawn} from 'child_process';
-import { ChildProcessWithoutNullStreams } from 'node:child_process';
+import { ChildProcessWithoutNullStreams, exec } from 'node:child_process';
+import { stdin, stdout } from 'node:process';
 
 export function tratamientoFicheros(fichero: string, metodo: number, modo: string){
 
-    const wc:ChildProcessWithoutNullStreams = spawn('wc', [fichero]);
+    if (metodo == 1){
+        const wc:ChildProcessWithoutNullStreams = spawn('wc', [fichero]);
+        let wcOutput:string = '';
+        wc.stdout.on('data', (piece) => wcOutput += piece);
+        console.log(fichero, metodo, modo);
 
-    let wcOutput:string = '';
-    wc.stdout.on('data', (piece) => wcOutput += piece);
-    console.log(fichero, metodo, modo)
-    wc.on('close', () => {
-        const wcOutputAsArray: string[] = wcOutput.split(/\s+/);
-        if (metodo == 1){
+        wc.on('close', () => {
+            const wcOutputAsArray: string[] = wcOutput.split(/\s+/);
             if (modo == "1"){
-                console.log(`El fichero tiene ${wcOutputAsArray[1]+1} líneas`);
+                console.log(`El fichero tiene ${wcOutputAsArray[1]} líneas`);
             }
             else if (modo == "2"){
                 console.log(`El fichero tiene ${wcOutputAsArray[2]} palabras`);
@@ -21,29 +22,48 @@ export function tratamientoFicheros(fichero: string, metodo: number, modo: strin
                 console.log(`El fichero tiene ${wcOutputAsArray[3]} caracteres`);
             }
             else if (modo = "*") {
-                console.log(`El fichero tiene ${wcOutputAsArray[1]+1} líneas`);
+                console.log(`El fichero tiene ${wcOutputAsArray[1]} líneas`);
                 console.log(`El fichero tiene ${wcOutputAsArray[2]} palabras`);
                 console.log(`El fichero tiene ${wcOutputAsArray[3]} caracteres`);
             }
+        });   
+    }
+    else if (metodo == 0){
+        const cat = spawn('cat', [fichero]);
+        const wcLineas = spawn('wc', ['-l']);
+        const wcPalabras = spawn('wc', ['-w']);
+        const wcCaracteres = spawn('wc', ['-c']);
+        cat.stdout.pipe(wcLineas.stdin);
+        cat.stdout.pipe(wcPalabras.stdin);
+        cat.stdout.pipe(wcCaracteres.stdin);
+
+        if (modo == "1"){
+            wcLineas.stdout.on('data', (lineas) => {
+                console.log(`El número de líneas es: ${lineas}`);
+            });
         }
-        else if (metodo == 0){
-            const lineas = wcOutputAsArray[1]
-            const palabras = wcOutputAsArray[2]
-            const caracteres = wcOutputAsArray[3]
-            if (modo == "1"){
-                spawn('echo', [`El fichero tiene ${lineas} líneas`]).stdout.pipe(process.stdout);
-            }
-            else if (modo == "2"){
-                spawn('echo', [`El fichero tiene ${palabras} palabras`]).stdout.pipe(process.stdout);
-            }
-            else if (modo == "3"){
-                spawn('echo', [`El fichero tiene ${caracteres} caracteres`]).stdout.pipe(process.stdout);
-            }
-            else if (modo = "*") {
-                spawn('echo', [`El fichero tiene ${lineas} líneas`]).stdout.pipe(process.stdout);
-                spawn('echo', [`El fichero tiene ${palabras} palabras`]).stdout.pipe(process.stdout);
-                spawn('echo', [`El fichero tiene ${caracteres} caracteres`]).stdout.pipe(process.stdout);
-            }
+        else if (modo == "2"){
+            wcPalabras.stdout.on('data', (palabras) => {
+                console.log(`El número de palabras es: ${palabras}`);
+            });
         }
-    });
+        else if (modo == "3"){
+            wcCaracteres.stdout.on('data', (caracteres) => {
+                console.log(`El número de caracteres es: ${caracteres}`);
+            });
+        }
+        else if (modo = "*") {
+            wcLineas.stdout.on('data', (lineas) => {
+                console.log(`El número de líneas es: ${lineas}`);
+            });
+
+            wcPalabras.stdout.on('data', (palabras) => {
+                console.log(`El número de palabras es: ${palabras}`);
+            });
+
+            wcCaracteres.stdout.on('data', (caracteres) => {
+                console.log(`El número de caracteres es: ${caracteres}`);
+            });
+        }
+    }
 }

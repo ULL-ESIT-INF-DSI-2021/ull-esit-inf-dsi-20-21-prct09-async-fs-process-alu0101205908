@@ -24,7 +24,7 @@ export class Read {
      */
     constructor(usuario: string, titulo: string){
         
-        this.rutaFichero = `./src/bbdd/${usuario}/${titulo}.json`;
+        this.rutaFichero = `./src/ejercicio3/bbdd/${usuario}/${titulo}.json`;
 
         if (this.comprobarNotaExistente(titulo) == 0) {
             

@@ -24,8 +24,8 @@ class Add {
         this.nota = { usuario: "", titulo: "", texto: "", color: "" };
         this.ruta = "";
         this.rutaFichero = "";
-        this.ruta = "./src/bbdd/" + usuario;
-        this.rutaFichero = `./src/bbdd/${usuario}/${titulo}.json`;
+        this.ruta = "./src/ejercicio3/bbdd/" + usuario;
+        this.rutaFichero = `./src/ejercicio3/bbdd/${usuario}/${titulo}.json`;
         this.esNuevoUsuario(usuario);
         if (this.comprobarNotaExistente(titulo) == 0) {
             if (this.comprobarColor(color) == 0) {

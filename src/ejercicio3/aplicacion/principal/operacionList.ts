@@ -21,7 +21,7 @@ export class List {
     constructor(usuario: string){
 
         try {
-            this.ruta = "./src/bbdd/" + usuario;
+            this.ruta = "./src/ejercicio3/bbdd/" + usuario;
             this.comprobarNotas();
         }
         catch(err){

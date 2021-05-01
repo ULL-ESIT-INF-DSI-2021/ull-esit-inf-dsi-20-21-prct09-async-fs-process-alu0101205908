@@ -29,9 +29,9 @@ export class Add {
      */
     constructor(usuario: string, titulo: string, texto: string, color: string){
 
-        this.ruta = "./src/bbdd/" + usuario;
+        this.ruta = "./src/ejercicio3/bbdd/" + usuario;
     
-        this.rutaFichero = `./src/bbdd/${usuario}/${titulo}.json`;
+        this.rutaFichero = `./src/ejercicio3/bbdd/${usuario}/${titulo}.json`;
 
         this.esNuevoUsuario(usuario);
 

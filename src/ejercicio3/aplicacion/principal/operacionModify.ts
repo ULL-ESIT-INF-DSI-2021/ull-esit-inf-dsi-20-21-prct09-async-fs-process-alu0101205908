@@ -24,7 +24,7 @@ export class Modify {
      */
     constructor(usuario: string, titulo: string, texto: string, color: string){
         
-        this.rutaFichero = `./src/bbdd/${usuario}/${titulo}.json`;
+        this.rutaFichero = `./src/ejercicio3/bbdd/${usuario}/${titulo}.json`;
 
         if (this.comprobarNotaExistente(titulo) == 0) {
             

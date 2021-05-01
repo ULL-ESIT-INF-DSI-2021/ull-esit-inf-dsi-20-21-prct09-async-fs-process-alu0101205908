@@ -1,7 +1,7 @@
 import { spawn } from "child_process";
 import { watch } from "fs";
 
-watch("./", () => {
+watch("./bbdd", () => {
     const ls = spawn('ls', ['-la', "./"]);
     let output = '';
     ls.stdout.on('data', chunk => output += chunk);

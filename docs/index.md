@@ -114,23 +114,23 @@
 
 	![Ejercicio 3.1][Ejercicio31]
 	
- * El ejemplo de ejecución del código para el comando 1 sería:
+ * El ejemplo de ejecución del código para el comando 2 sería:
 
 	![Ejercicio 3.2][Ejercicio32]
 	
-* El ejemplo de ejecución del código para el comando 1 sería:
+ * El ejemplo de ejecución del código para el comando 3 sería:
 
 	![Ejercicio 3.3][Ejercicio33]
 	
-* El ejemplo de ejecución del código para el comando 1 sería:
+ * El ejemplo de ejecución del código para el comando 4 sería:
 
 	![Ejercicio 3.4][Ejercicio34]
 	
-* El ejemplo de ejecución del código para el comando 1 sería:
+ * El ejemplo de ejecución del código para el comando 5 sería:
 
 	![Ejercicio 3.5][Ejercicio35]
 	
-* El ejemplo de ejecución del código para el comando 1 sería:
+ * El ejemplo de ejecución del código para el comando 6 sería:
 
 	![Ejercicio 3.6][Ejercicio36]
 	

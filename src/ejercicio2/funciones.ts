@@ -1,7 +1,13 @@
 import {spawn} from 'child_process';
-import { ChildProcessWithoutNullStreams, exec } from 'node:child_process';
-import { stdin, stdout } from 'node:process';
+import { ChildProcessWithoutNullStreams} from 'node:child_process';
 
+
+/**
+ * Función para comprobar el número de líneas, palabras y caracteres de un fichero.
+ * @param fichero Ruta del fichero a comprobar.
+ * @param metodo Método que se desea utilizar.
+ * @param modo Modo que se aplicará (1, 2, 3 o *)
+ */
 export function tratamientoFicheros(fichero: string, metodo: number, modo: string){
 
     if (metodo == 1){

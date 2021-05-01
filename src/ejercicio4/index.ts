@@ -2,8 +2,8 @@ import * as f from './funciones'
 const yargs = require('yargs');
 
 /**
- * Comando --add: Sirve añadir una nota.
- * OPCIONES: --usuario="nombre usuario" --titulo="titulo de la nota" --texto="texto de la nota" --color="color de la nota"
+ * Comando --1: Método para comprobar si la ruta dada es un fichero o un directorio.
+ * OPCIONES: --ruta="ruta del directorio | fichero"
  */
 yargs.command("1", 'Indicar si es un directorio o un fichero', {
     ruta: {
@@ -14,6 +14,10 @@ yargs.command("1", 'Indicar si es un directorio o un fichero', {
 });
 
 
+/**
+ * Comando --2: Método para crear un directorio.
+ * OPCIONES: --ruta="ruta donde crear el directorio" --directorio="nombre del directorio a crear"
+ */
 yargs.command("2", 'Crea un directorio dada una ruta', {
     ruta: {
         describe: 'Ruta donde crear el nuevo directorio',
@@ -28,6 +32,10 @@ yargs.command("2", 'Crea un directorio dada una ruta', {
 });
 
 
+/**
+ * Comando --3: Método para listar el contenido de un directorio.
+ * OPCIONES: --ruta="ruta del directorio a listar"
+ */
 yargs.command("3", 'Lista los ficheros de un directorio dada una ruta', {
     ruta: {
         describe: 'Ruta a hacer el ls',
@@ -37,6 +45,10 @@ yargs.command("3", 'Lista los ficheros de un directorio dada una ruta', {
 });
 
 
+/**
+ * Comando --4: Método para mostar el contenido de un fichero.
+ * OPCIONES: --ruta="ruta del fichero a mostrar"
+ */
 yargs.command("4", 'Mostrar el contenido de un fichero', {
     ruta: {
         describe: 'Ruta del fichero para hacer el cat',
@@ -46,6 +58,10 @@ yargs.command("4", 'Mostrar el contenido de un fichero', {
 });
 
 
+/**
+ * Comando --5: Método para borrar directorios y ficheros.
+ * OPCIONES: --ruta="ruta del fichero | fichero a borrar" --modo="Si es un fichero (1) | si es un directorio (0)"
+ */
 yargs.command("5", 'Borrar ficheros o directorios', {
     ruta: {
         describe: 'Ruta del fichero o directorio a borrar',
@@ -60,6 +76,10 @@ yargs.command("5", 'Borrar ficheros o directorios', {
 });
 
 
+/**
+ * Comando --6: Método para copiar directorios y ficheros.
+ * OPCIONES: --rutaOrigen="ruta del fichero | fichero a copiar" ----rutaOrigen="ruta del fichero | fichero donde se copiará" --modo="Si es un fichero (1) | si es un directorio (0)"
+ */
 yargs.command("6", 'Mover y copiar directorios y ficheros', {
     rutaOrigen: {
         describe: 'Ruta del fichero o directorio a copiar/mover',

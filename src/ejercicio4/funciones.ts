@@ -1,9 +1,11 @@
-import { readdirSync } from 'fs';
 import { ChildProcessWithoutNullStreams, spawn } from 'child_process';
-import { opendirSync, readFileSync } from 'fs';
 import { access, constants, watch} from 'fs';
 
 
+/**
+ * Función para comprobar si una ruta dada se trata de un directorio o un fichero.
+ * @param ruta Ruta a comprobar
+ */
 export function func1(ruta: string){
 
     const ls: ChildProcessWithoutNullStreams = spawn('ls', ['-la', ruta]);
@@ -22,6 +24,11 @@ export function func1(ruta: string){
 }
 
 
+/**
+ * Función para crear un nuevo directorio dada una ruta donde crearlo.
+ * @param ruta Ruta donde crear el directorio.
+ * @param directorio Nombre del directorio a crear.
+ */
 export function func2(ruta: string, directorio: string){
 
     access(ruta, constants.F_OK, (err) => {
@@ -35,6 +42,10 @@ export function func2(ruta: string, directorio: string){
 }
 
 
+/**
+ * Función para listar el contenido de un directorio.
+ * @param ruta Ruta del directorio a listar.
+ */
 export function func3(ruta: string){
 
     access(ruta, constants.F_OK, (err) => {
@@ -48,6 +59,10 @@ export function func3(ruta: string){
 }
 
 
+/**
+ * Función para mostrar el contenido de un fichero.
+ * @param ruta Ruta del fichero a mostar.
+ */
 export function func4(ruta: string){
 
     access(ruta, constants.R_OK, (err) => {
@@ -61,6 +76,11 @@ export function func4(ruta: string){
 }
 
 
+/**
+ * Función para borrar fichero y directorios.
+ * @param ruta Ruta del fichero | directorio a borrar.
+ * @param modo Si se trata de un fichero 1 | si se trat de un directorio 0
+ */
 export function func5(ruta: string, modo: number){
 
     if (modo == 0){
@@ -86,6 +106,12 @@ export function func5(ruta: string, modo: number){
 }
 
 
+/**
+ * Función para mover ficheros y directorios.
+ * @param rutaOrigen Ruta del fichero o directorio a copiar.
+ * @param rutaDestino RUta donde se copiará el directorio o fichero.
+ * @param modo Si se trata de un fichero 1 | si se trat de un directorio 0
+ */
 export function func6(rutaOrigen: string, rutaDestino: string, modo: number){
 
     if (modo == 0){

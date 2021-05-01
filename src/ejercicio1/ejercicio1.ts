@@ -22,8 +22,6 @@ if (process.argv.length !== 3) {
       console.log(`File ${filename} is no longer watched`);
     }
   });
-
-  console.log("Borjaaa")
 }
 
 /*
@@ -32,15 +30,15 @@ if (process.argv.length !== 3) {
 |               |
 |               |
 |               |
-|               | --> Inicio: La pila de llamadas está vacía
+|               | --> Inicio: La pila de llamadas está vacía.
 |               |
 -----------------
 
 
 |               |
 |               |
-|               |  --> Cuando se ejecuta un script en Node, este se envuelve en un main
-|               |      Se introduce main en la pila
+|               |  --> Cuando se ejecuta un script en Node, este se envuelve en un main.
+|               |      Se introduce main en la pila.
 |  main         |
 -----------------
 
@@ -48,7 +46,7 @@ if (process.argv.length !== 3) {
 |               |
 |               |
 |               |  
-|  access       | --> Se introduce en la pila access
+|  access       | --> Se introduce access en la pila.
 |  main         |
 -----------------
 
@@ -58,6 +56,14 @@ if (process.argv.length !== 3) {
 |               |  
 |               | --> Se saca access de la pila y se lleva a los registro de la API
 |  main         |
+-----------------
+
+
+|               |
+|               |
+|               |  
+|               | --> Se saca main de la pila.
+|               |
 -----------------
 
 
@@ -91,18 +97,18 @@ if (process.argv.length !== 3) {
 
 |               |
 |               |
+|               |
 |               |  
 | { access }    | --> Se introduce el manejador de access en la pila
-|  main         |
 -----------------
 
 
 |               |
 |               |
+|               |
 |               |  
 |  console.log()| --> Del manejador de access entra --> console.log()
 | { access }    |
-|  main         |
 -----------------
 
 
@@ -111,106 +117,80 @@ SALIDA: `Starting to watch file helloworld.txt`
 
 |               |
 |               |
+|               |
 |               |  --> Sale el console.log()
 |               | 
 | { access }    |
-|  main         |
 -----------------
 
 
+|               |
 |               |
 |               |
 |               |  
 |  watch        | --> Del manejador de access entra --> watch
 | { access }    |
-|  main         |
 -----------------
 
 
 |               |
 |               |
+|               |
 |               |  
-|               | --> Se saca watch de la pila y va al registro de eventos
+|               | --> Se saca watch de la pila y se ejecuta.
 | { access }    |
-|  main         |
+-----------------
+
+
+|               |
+|               |
+|               |
+|               |  
+|  watcher.on   | --> Del manejador de access entra --> watcher.on
+| { access }    |
+-----------------
+
+
+|               |
+|               |
+|               |
+|               |  
+|               | --> Se saca watcher.on de la pila
+| { access }    |
 -----------------
 
 
 ************* E V E N T O S   A P I **************
 |
 |
-| watch                                              --> Se registra un nuevo evento, watch                                          
-**************************************************
-
-
-************* E V E N T O S   A P I **************
-|
-|
-|                                                    --> Se saca el registro watch                                          
+| watcher.on                                           --> Se registra un nuevo evento, watcher.on                                          
 **************************************************
 
 
 |               |
 |               |
-|               |  
-|  console.log()| --> Del manejador de access entra --> console.log()
-| { access }    |
-|  main         |
------------------
-
-
-SALIDA: `File helloworld.txt is no longer watched`
-
-
-|               |
-|               |
-|               |  --> Sale el console.log()
-|               | 
-| { access }    |
-|  main         |
------------------
-
-
 |               |
 |               |
 |               |  
-|  on           | --> Del manejador de access entra --> on
-| { access }    |
-|  main         |
+|               | --> Se saca el manejador de access de la pila
 -----------------
 
 
-|               |
-|               |
-|               |  
-|               | --> Se saca on de la pila
-| { access }    |
-|  main         |
------------------
-
-
-************* E V E N T O S   A P I **************
-|
-|
-| on                                                 --> Se registra un nuevo evento, on                                          
-**************************************************
-
-
-** Hacemos un cambio en el fichero ** 
+** Hacemos un cambio en el fichero (watcher.on esperando a que haya un cambio (change))** 
 
 
 ----------- C O L A --------------
 |
 |   
-| { on }                              --> Se introduce en la cola el manejador de on
+| { watcher.on }                        --> Se introduce en la cola el manejador de watcher.on
 ----------------------------------
 
 
 |               |
 |               |
+|               |
+|               |
 | console.log() |  --> Del manejador de on entra --> console.log()
-| { access }    |
-|  main         |
 -----------------
 
 
@@ -219,27 +199,27 @@ SALIDA: `File helloworld.txt has been modified somehow`
 
 |               |
 |               |
+|               |
+|               |
 |               |  --> Se saca console.log()
-| { access }    |
-|  main         |
 -----------------
 
 
-** Hacemos un cambio en el fichero ** 
+** Hacemos un cambio en el fichero (watcher.on esperando a que haya un cambio (change))** 
 
 
 ----------- C O L A --------------
 |
 |   
-| { on }                              --> Se introduce en la cola el manejador de on
+| { watcher.on }                        --> Se introduce en la cola el manejador de watcher.on
 ----------------------------------
 
 
 |               |
 |               |
+|               |
+|               |
 | console.log() |  --> Del manejador de on entra --> console.log()
-| { access }    |
-|  main         |
 -----------------
 
 
@@ -248,33 +228,17 @@ SALIDA: `File helloworld.txt has been modified somehow`
 
 |               |
 |               |
+|               |
+|               |
 |               |  --> Se saca console.log()
-| { access }    |
-|  main         |
 -----------------
 
-FINALIZAMOS LA EJECUCIÓN:
+FINALIZAMOS LA EJECUCIÓN (Crtl C):
 
 
 ************* E V E N T O S   A P I **************
 |
 |
-|                                                      --> Se saca el evento on del registro                                          
+|                                                      --> Se saca el evento watcher.on del registro                                          
 **************************************************
-
-
-|               |
-|               |
-|               |  
-|               | --> Se saca de la pila el manejador de access
-|  main         |
------------------
-
-
-|               |
-|               |
-|               |  
-|               | 
-|               |   --> Se saca de la pila main
------------------
 */

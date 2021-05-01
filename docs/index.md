@@ -97,5 +97,49 @@
 
 	![Ejercicio 2][Ejercicio2]
 	
+## Ejercicio 4:
+
+ * Para este último ejercicio se solicita una aplicación que haga  de wrapper. Para 
+
+ * Lo que se ha hecho es codificar los comandos con la librería yargs, y son los siguientes:
+  
+	* ***1 --ruta="ruta del directorio | fichero"*** --> Método para comprobar si la ruta dada es un fichero o un directorio.
+	* ***2 --ruta="ruta donde crear el directorio" --directorio="nombre del directorio a crear"*** --> Método para crear un directorio.
+	* ***3 --ruta="ruta del directorio a listar"*** --> Método para listar el contenido de un directorio.
+	* ***4 --ruta="ruta del fichero a mostrar"*** --> Método para mostar el contenido de un fichero.
+	* ***5 --ruta="ruta del fichero | fichero a borrar" --modo="Si es un fichero (1) | si es un directorio (0)"*** --> Método para borrar directorios y ficheros.
+	* ***6 --rutaOrigen="ruta del fichero | fichero a copiar" --rutaDestino="ruta del fichero | fichero donde se copiará" --modo="Si es un fichero (1) | si es un directorio (0)"*** --> Método para copiar directorios y ficheros.
+
+ * El ejemplo de ejecución del código para el comando 1 sería:
+
+	![Ejercicio 3.1][Ejercicio31]
+	
+ * El ejemplo de ejecución del código para el comando 1 sería:
+
+	![Ejercicio 3.2][Ejercicio32]
+	
+* El ejemplo de ejecución del código para el comando 1 sería:
+
+	![Ejercicio 3.3][Ejercicio33]
+	
+* El ejemplo de ejecución del código para el comando 1 sería:
+
+	![Ejercicio 3.4][Ejercicio34]
+	
+* El ejemplo de ejecución del código para el comando 1 sería:
+
+	![Ejercicio 3.5][Ejercicio35]
+	
+* El ejemplo de ejecución del código para el comando 1 sería:
+
+	![Ejercicio 3.6][Ejercicio36]
+	
+	
 [Ejercicio1]: images/ejercicio1.JPG "Ejercicio 1"
 [Ejercicio2]: images/ejercicio2.JPG "Ejercicio 2"
+[Ejercicio31]: images/ejercicio31.JPG "Ejercicio 31"
+[Ejercicio32]: images/ejercicio32.JPG "Ejercicio 32"
+[Ejercicio33]: images/ejercicio33.JPG "Ejercicio 33"
+[Ejercicio34]: images/ejercicio34.JPG "Ejercicio 34"
+[Ejercicio35]: images/ejercicio35.JPG "Ejercicio 35"
+[Ejercicio36]: images/ejercicio36.JPG "Ejercicio 36"

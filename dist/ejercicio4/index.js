@@ -58,6 +58,23 @@ yargs.command("5", 'Borrar ficheros o directorios', {
         type: 'number',
     }
 });
+yargs.command("6", 'Mover y copiar directorios y ficheros', {
+    rutaOrigen: {
+        describe: 'Ruta del fichero o directorio a copiar/mover',
+        demandOption: true,
+        type: 'string',
+    },
+    rutaDestino: {
+        describe: 'Ruta de destino',
+        demandOption: true,
+        type: 'string',
+    },
+    modo: {
+        describe: 'Mover/Copiar fichero (1) Mover/Copiar directorio (0)',
+        demandOption: true,
+        type: 'number',
+    }
+});
 yargs.help();
 yargs.alias("help", "h");
 const argv = yargs.argv;
@@ -78,6 +95,7 @@ else if (comando == "5") {
     f.func5(argv.ruta, argv.modo);
 }
 else if (comando == "6") {
+    f.func6(argv.rutaOrigen, argv.rutaDestino, argv.modo);
 }
 else {
     console.log("¡Comando inexistente!");
